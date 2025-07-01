@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload vidéo pour Heatmap</title>
+</head>
+<body>
+    <h1>Uploader une vidéo</h1>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="video" accept="video/*" required />
+        <button type="submit">Lancer le traitement</button>
+    </form>
+
+    {% if result_video %}
+    <h2>Vidéo traitée :</h2>
+    <video width="640" height="480" controls>
+        <source src="{{ url_for('static', filename=result_video) }}" type="video/mp4">
+        Votre navigateur ne supporte pas la vidéo.
+    </video>
+    {% endif %}
+</body>
+</html>
